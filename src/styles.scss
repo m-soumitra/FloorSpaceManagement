@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "../node_modules/font-awesome/css/font-awesome.css";
+@import '~@angular/material/theming';
+@import '../node_modules/primeng/resources/themes/omega/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+
+/*This fills the remaining space, by using flexbox. Every toolbar row uses a flexbox row layout*/
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+md-sidenav.m2app-dark {
+  background: black;
+}
+
+.m2app-dark{
+  $dark-primary: md-palette($mat-pink, 700, 500, 900);
+  $dark-accent:  md-palette($mat-blue-grey, A200, A100, A400);
+  $dark-warn:    md-palette($mat-deep-orange);
+
+  $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+ // @include angular-material-theme($dark-theme);
+}
+
+input, textarea, select, button, p{
+  font: 500 16px/26px Roboto,"Helvetica Neue",sans-serif;
+}
+
+.float-right{
+  float: right;
+}

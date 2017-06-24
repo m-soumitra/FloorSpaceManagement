@@ -1,0 +1,40 @@
+<ng-progress [positionUsing]="'marginLeft'" [minimum]="0.16" [maximum]="1" [speed]="201" [showSpinner]="true" [direction]="'leftToRightIncreased'"
+  [color]="'blue'" [trickleSpeed]="251" [thick]="true" [ease]="'linear'"></ng-progress>
+<md-sidenav-container>
+  <md-sidenav #sideMenu class="site-sidenav" md-component-id="left">
+    <header class="logo-header"><a routerLink="map">
+      <img src="assets/images/seat.jpg" alt="App Logo" height="64" width="248" /></a></header>
+    <ul>
+      <li><a href="welcome" routerLinkActive="active-link">Home</a></li>
+      <li><a [routerLink]="['/allocationsys']" routerLinkActive="active-link">Allocation System</a></li>
+      <li><a href="#contact" routerLinkActive="active-link">Contact</a></li>
+      <li><a href="#about" routerLinkActive="active-link">About</a></li>
+    </ul>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <md-icon><span (click)="sideMenu.toggle()"><i class="fa fa-bars" aria-hidden="true"></i></span></md-icon>
+    <span class="app-title">Floor Space Management</span>
+    <span class="fill-remaining-space"></span>
+
+    <span class="app-toolbar-filler"></span>
+    <span>
+      <button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>more_vert</md-icon>
+      </button>
+    </span>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item>
+        <md-icon><i class="fa fa-user" aria-hidden="true"></i></md-icon>
+        <span>User Name</span>
+      </button>
+      <button md-menu-item (click)="logout()">
+        <md-icon><i class="fa fa-sign-out" aria-hidden="true"></i></md-icon>
+        <span>Logout</span>
+      </button>
+    </md-menu>
+  </md-toolbar>
+  <div class="col-md-12 app-content fill">
+    <router-outlet></router-outlet>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</md-sidenav-container>

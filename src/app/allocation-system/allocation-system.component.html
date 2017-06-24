@@ -1,0 +1,69 @@
+<div class="col-md-12">
+  <form class="modal-footer no-padding">
+    <div class="input-group pull-right">
+      <input #gb type="text"  pInputText size="50"  class="form-control"  placeholder="{{ 'all.search' | translate }}">
+        <span class="input-group-addon">
+          <i class="fa fa-search"></i>
+            </span>
+</div>
+</form>
+<div class="margin-left-large float-right">
+  <button type="button" class="btn btn-primary" (click)="export(accrualSearchForm)">{{ 'all.search' | translate }}</button>
+</div>
+<p>{{ 'all.results' | translate }} {{_rowsShown}} {{(_data==null)? "0":_data?.length}}</p>
+<p-dataTable [value]="_gridData" resizableColumns="true" [globalFilter]="gb" [paginator]="true" [pageLinks]="3" [rows]="10"
+  [rowsPerPageOptions]="[25,50,100,200]" (onPage)="onPage($event)">
+  <p-column field="requestId" header="{{ 'allocSys.requestId' | translate }}" [sortable]="true">
+    <ng-template png-template="body" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{row['requestId']}}">{{row[col.field]}}</span>
+    </ng-template>
+  </p-column>
+  <p-column field="projectName" header="{{ 'allocSys.projectName' | translate }}" [sortable]="true">
+    <ng-template png-template="header" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{ 'as_tt.vendorLoc' | translate }}">{{ 'allocSys.projectName' | translate }}</span>
+    </ng-template>
+    <ng-template png-template="body" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{row['projectName']}}">{{row[col.field]}}</span>
+    </ng-template>
+  </p-column>
+  <p-column field="type" header="{{ 'allocSys.type' | translate }}" [sortable]="true">
+    <ng-template png-template="body" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{row['type']}}">{{row[col.field]}}</span>
+    </ng-template>
+  </p-column>
+  <p-column field="status" header="{{ 'allocSys.status' | translate }}" [sortable]="true">
+    <ng-template png-template="header" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{ 'as_tt.rebateType' | translate }}">{{ 'allocSys.status' | translate }}</span>
+    </ng-template>
+    <ng-template png-template="body" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{row['status']}}">{{row['status']}}</span>
+    </ng-template>
+  </p-column>
+  <p-column field="requestedSeats" header="{{ 'allocSys.requestedSeats' | translate }}" [sortable]="true">
+    <ng-template png-template="header" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{ 'as_tt.PO' | translate }}">{{ 'allocSys.requestedSeats' | translate }}</span>
+    </ng-template>
+    <ng-template png-template="body" let-col let-row="rowData">
+      <span aria-hidden="true">{{row['requestedSeats']}}</span>
+    </ng-template>
+  </p-column>
+  <p-column field="preferredBay" header="{{ 'allocSys.preferredBay' | translate }}" [sortable]="true">
+    <ng-template png-template="body" let-col let-row="rowData">
+      <a aria-hidden="true" title="{{row['preferredBay']}}">{{row[col.field]}}</a>
+    </ng-template>
+  </p-column>
+  <p-column field="leadershipApproval" header="{{ 'allocSys.leadershipApproval' | translate }}" [sortable]="true">
+    <ng-template png-template="header" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{ 'as_tt.poRecDate' | translate }}">{{ 'allocSys.leadershipApproval' | translate }}</span>
+    </ng-template>
+    <ng-template png-template="body" let-col let-row="rowData">
+      <span aria-hidden="true">{{row[col.field] }}</span>
+    </ng-template>
+  </p-column>
+  <p-column field="comments" header="{{ 'allocSys.comments' | translate }}" [sortable]="true"></p-column>
+  <p-column field="process" header="{{ 'allocSys.process' | translate }}" [sortable]="true">
+    <ng-template png-template="header" let-col let-row="rowData">
+      <span aria-hidden="true" title="{{ 'as_tt.accType' | translate }}">{{ 'allocSys.accType' | translate }}</span>
+    </ng-template>
+  </p-column>
+</p-dataTable>
